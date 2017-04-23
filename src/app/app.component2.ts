@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Villain } from './villain';
-
-const VILLAINS: Villain[] = [
+export class Hero {
+  id: number;
+  name: string;
+}
+const HEROES: Hero[] = [
   { id: 11, name: 'Mr. Nice' },
   { id: 12, name: 'Narco' },
   { id: 13, name: 'Bombasto' },
@@ -11,36 +13,41 @@ const VILLAINS: Villain[] = [
   { id: 17, name: 'Dynama' },
   { id: 18, name: 'Dr IQ' },
   { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' },
+  { id: 20, name: 'Tornado' }
 ];
 @Component({
   selector: 'my-app',
   template: `
-	<h1>{{title}}</h1>
-	<h2>My Villains</h2>
-	<ul class="villains">
-		<li *ngFor="let villain of villains" 
-			(click)="onSelect(villain)"
-			[class.selected]="villain === selectedVillain">
-			<span class="badge">{{villain.id}}</span> {{villain.name}}
-		</li>
-	</ul>
-
-	<villain-detail [villain]="selectedVillain"></villain-detail>
-
-	`,
-	styles: [`
+    <h1>{{title}}</h1>
+    <h2>My Heroes</h2>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes"
+        [class.selected]="hero === selectedHero"
+        (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </li>
+    </ul>
+    <div *ngIf="selectedHero">
+      <h2>{{selectedHero.name}} details!</h2>
+      <div><label>id: </label>{{selectedHero.id}}</div>
+      <div>
+        <label>name: </label>
+        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+      </div>
+    </div>
+  `,
+  styles: [`
     .selected {
       background-color: #CFD8DC !important;
       color: white;
     }
-    .villains {
+    .heroes {
       margin: 0 0 2em 0;
       list-style-type: none;
       padding: 0;
       width: 15em;
     }
-    .villains li {
+    .heroes li {
       cursor: pointer;
       position: relative;
       left: 0;
@@ -50,20 +57,20 @@ const VILLAINS: Villain[] = [
       height: 1.6em;
       border-radius: 4px;
     }
-    .villains li.selected:hover {
+    .heroes li.selected:hover {
       background-color: #BBD8DC !important;
       color: white;
     }
-    .villains li:hover {
+    .heroes li:hover {
       color: #607D8B;
       background-color: #DDD;
       left: .1em;
     }
-    .villains .text {
+    .heroes .text {
       position: relative;
       top: -3px;
     }
-    .villains .badge {
+    .heroes .badge {
       display: inline-block;
       font-size: small;
       color: white;
@@ -79,12 +86,11 @@ const VILLAINS: Villain[] = [
     }
   `]
 })
-export class AppComponent  { 
-	title = 'Randomancer';
-	villains = VILLAINS;
-	selectedVillain: Villain;
-	onSelect(villain: Villain): void {
-		this.selectedVillain = villain;
-	}
+export class AppComponent {
+  title = 'Tour of Heroes';
+  heroes = HEROES;
+  selectedHero: Hero;
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 }
-
