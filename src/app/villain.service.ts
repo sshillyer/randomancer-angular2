@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Villain } from './villain';
-import { VILLAINS } from './mock-villains';
+import { Scheme } from './scheme';
 
 @Injectable()
 export class VillainService {
-	getVillains(): Promise<Villain[]> {
-		return Promise.resolve(VILLAINS);
-	}
-
-	getVillain(id : number): Promise<Villain> {
-		return this.getVillains()
-			.then(villains => villains.find(villain => villain.id === id));
+	getRandomVillain(): Promise<Villain> {
+		let randomVillain = new Villain();
+		randomVillain.randomize();
+		return Promise.resolve(randomVillain);
 	}
 }

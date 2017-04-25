@@ -1,35 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+
 import { Villain } from './villain';
-import { VillainService } from './villain.service';
 
 @Component({
-	selector: 'my-villains',
+	selector: 'villains',
 	templateUrl: './villains.component.html',
-	styleUrls: ['./villains.component.css']
+	//styleUrls: ['./villains.component.css']
 })
 
 export class VillainsComponent implements OnInit { 
-	villains: Villain[];
-	selectedVillain: Villain;
+	randomVillain: Villain;
 
-	constructor(
-		private router: Router;
-		private villainService: VillainService) { }
+	// constructor(
+	// 	private router: Router) { }
 
-	onSelect(villain: Villain): void {
-		this.selectedVillain = villain;
-	}
-	getVillains(): void {
-		this.villainService.getVillains().then(villains => this.villains = villains);
-	}
+
 	ngOnInit(): void {
-		this.getVillains();
-	}
-
-	gotoDetail(): void {
-		this.router.navigate(['/detail', this.selectedVillain.id]);
+		this.randomVillain = new Villain();
+		this.randomVillain.setRandomScheme();
 	}
 }
 
