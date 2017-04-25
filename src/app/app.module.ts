@@ -2,11 +2,20 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
+import { VillainsComponent } from './villains.component';
+
 
 
 @NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
+  imports:      [ 
+    BrowserModule,
+
+  ],
+  declarations: [ 
+  	AppComponent,
+  	VillainsComponent,
+
+  ],
   providers: [
   	// VillainService,
   ],

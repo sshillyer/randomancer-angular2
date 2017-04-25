@@ -3,4 +3,11 @@
 	<a routerLink="/villains">Villains</a>
 	<a routerLink="/npcs">NPCs</a>
 </nav>
+
+<div *ngIf="villain">
+	<h3>Villain Details</h3>
+	<p><strong>Objective:</strong> {{villain.scheme.objective}}</p>
+	<p><strong>Scheme: </strong>{{villain.scheme.specificScheme}}</p>
+</div>
+
 <!-- <router-outlet></router-outlet> -->
