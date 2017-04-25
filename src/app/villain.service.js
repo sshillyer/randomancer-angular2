@@ -6,24 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-// import { Router } from '@angular/router';
 var villain_1 = require("./villain");
-var VillainsComponent = (function () {
-    function VillainsComponent() {
+var VillainService = (function () {
+    function VillainService() {
     }
-    // constructor(
-    // 	private router: Router) { }
-    VillainsComponent.prototype.ngOnInit = function () {
-        this.randomVillain = new villain_1.Villain();
-        this.randomVillain.setRandomScheme();
+    VillainService.prototype.getRandomVillain = function () {
+        var randomVillain = new villain_1.Villain();
+        randomVillain.randomize();
+        return Promise.resolve(randomVillain);
     };
-    return VillainsComponent;
+    return VillainService;
 }());
-VillainsComponent = __decorate([
-    core_1.Component({
-        selector: 'villains',
-        templateUrl: './villains.component.html',
-    })
-], VillainsComponent);
-exports.VillainsComponent = VillainsComponent;
-//# sourceMappingURL=villains.component.js.map
+VillainService = __decorate([
+    core_1.Injectable()
+], VillainService);
+exports.VillainService = VillainService;
+//# sourceMappingURL=villain.service.js.map

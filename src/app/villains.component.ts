@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 import { Villain } from './villain';
 
@@ -13,8 +13,8 @@ import { Villain } from './villain';
 export class VillainsComponent implements OnInit { 
 	randomVillain: Villain;
 
-	constructor(
-		private router: Router) { }
+	// constructor(
+	// 	private router: Router) { }
 
 
 	ngOnInit(): void {

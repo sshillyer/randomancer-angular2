@@ -10,7 +10,8 @@ export const SCHEMES: Scheme[] = [
 			'Ascend to godhood',
 			'Become undead or obtain a younger body',
 			'Steal a planar creature\'s essence'
-		]
+		],
+		specificString: ''
 	},
 	{ 
 		objective: 'Influence',
@@ -19,7 +20,8 @@ export const SCHEMES: Scheme[] = [
 			'Win a contest or tournament',
 			'Win favor with a powerful individual',
 			'Place a pawn in a position of power'
-		]
+		],
+		specificString: ''
 	},
 		{ 
 		objective: 'Magic',
@@ -30,7 +32,8 @@ export const SCHEMES: Scheme[] = [
 			'Offer sacrifices to a deity',
 			'Contact a lost deity or power',
 			'Open a gate to another world'
-		]
+		],
+		specificString: ''
 	},
 		{ 
 		objective: 'Mayhem',
@@ -41,7 +44,8 @@ export const SCHEMES: Scheme[] = [
 			'Overthrow a government',
 			'Trigger a natural disaster',
 			'Utterly destroy a bloodline or clan'
-		]
+		],
+		specificString: ''
 	},
 		{ 
 		objective: 'Passion',
@@ -50,7 +54,8 @@ export const SCHEMES: Scheme[] = [
 			'Prove worthy of another person\'s love',
 			'Raise or restore a dead loved one',
 			'Destroy rivals for another person\'s affection'
-		]
+		],
+		specificString: ''
 	},
 		{ 
 		objective: 'Power',
@@ -58,8 +63,9 @@ export const SCHEMES: Scheme[] = [
 			'Conquer a region or incite a rebellion',
 			'Seize control of an army',
 			'Become the power behind the throne',
-			'Gain the favor of a ru ler'
-		]
+			'Gain the favor of a ruler'
+		],
+		specificString: ''
 	},
 		{ 
 		objective: 'Revenge',
@@ -68,7 +74,8 @@ export const SCHEMES: Scheme[] = [
 			'Avenge a past imprisonment or injury',
 			'Avenge the death of a loved one',
 			'Retrieve stolen property and punish the thief'
-		]
+		],
+		specificString: ''
 	},
 		{ 
 		objective: 'Wealth',
@@ -77,6 +84,7 @@ export const SCHEMES: Scheme[] = [
 			'Marry into wealth',
 			'Plunder ancient ruins',
 			'Steal land, goods, or money'
-		]
+		],
+		specificString: ''
 	},
 ];
