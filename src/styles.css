@@ -1,5 +1,222 @@
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+@import url("reset.css");
+
+/* 5e books color references:
+ * http://rpg.brainclouds.net/2014/11/24/the-fonts-of-dd-5th-edition/
+ * http://rpg.brainclouds.net/2014/11/24/the-fonts-of-dd-5th-edition/
+ */
+
+/* * * * * * * * * * * * * *
+ * Fonts                   *
+ * * * * * * * * * * * * * */
+
+/* Mrs Eaves SmallCaps */
+@font-face {
+    font-family: 
+        SmallCaps;
+    src: 
+        url(fonts/mrseavessmallcaps_regular.ttf)
+        format('truetype');
 }
+
+
+/* Scala Sans */
+@font-face {
+    font-family: 
+        ScalaSans;
+    src: 
+        url(fonts/scalasans.ttf)
+        format('truetype');
+}
+
+/* Bold version */
+@font-face {
+    font-family:
+        ScalaSans;
+    src:
+        url(fonts/scalasans-bold.ttf)
+        format('truetype');
+    font-weight: 
+        bold;
+}
+
+/* Scala Sans Smallcaps */
+@font-face {
+    font-family: 
+        ScalaSansCaps;
+    src: 
+        url(fonts/scalasans-caps.ttf)
+        format('truetype');
+}
+
+/* Bold version */
+@font-face {
+    font-family:
+        ScalaSansCaps;
+    src:
+        url(fonts/scalasans-caps-bold.ttf)
+        format('truetype');
+    font-weight: 
+        bold;
+}
+
+/* (free) Replacement for Bookmania font */
+@font-face {
+    font-family: 
+        BookmaniaSub;
+    src:
+        url(fonts/texgyrebonum-regular.otf)
+        format('opentype');
+}
+
+/* Bold version */
+@font-face {
+    font-family: 
+        BookmaniaSub;
+    src:
+        url(fonts/texgyrebonum-bold.otf)
+        format('opentype');
+    font-weight:
+        bold;
+}
+
+/* italic version */
+@font-face {
+    font-family: 
+        BookmaniaSub;
+    src:
+        url(fonts/texgyrebonum-italic.otf)
+        format('opentype');
+    font-style:
+        italic;
+}
+
+/* Bold italic */
+@font-face {
+    font-family: 
+        BookmaniaSub;
+    src:
+        url(fonts/texgyrebonum-italic.otf)
+        format('opentype');
+    font-weight:
+        bold;
+    font-style:
+        italic;
+}
+
+
+
+body {
+    margin: 3em;
+}
+
+
+/* * * * * * * * * * * * * *
+ * Headings                *
+ * * * * * * * * * * * * * */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #58170D;
+    font-family: SmallCaps, serif;
+    margin-top: .6em;
+    margin-bottom: .1em;
+}
+
+/* Title headings. Mrs Eaves SMall Caps, 24 pt. Color #58170D */
+h1 {
+    font-size: 24pt;
+}
+
+/* Tier 1 section headings */
+h2 {
+    font-size: 20pt;
+}
+
+/* Tier 2 section headings */
+h3 {
+    font-size: 15pt;
+    border-bottom: solid #b5b353;
+    border-bottom-width: 2px;
+}
+
+/* Tier 3 section headings */
+h4 {
+    font-size: 12pt;
+}
+
+/* Todo: h5 + h6? */
+
+
+.column {
+    width: 50%;
+}
+
+
+
+/* * * * * * * * * * * * * *
+ * Basic text              *
+ * * * * * * * * * * * * * */
+p {
+    font-family: BookmaniaSub, serif;
+    font-size: 9pt;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}
+
+
+body {
+    background-image: url('../images/paper-bg.jpg');
+    background-repeat: repeat;
+}
+
+
+
+
+/* * * * * * * * * * * * * *
+ * Tables                  *
+ * * * * * * * * * * * * * */
+
+.table h1 {
+    font-family: ScalaSansCaps, sans-serif;
+    color: black;
+}
+
+/* Title of the table */
+.table h1 {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: left;
+    padding-top: .5em;
+}
+
+.table table {
+    margin-left: .5em;
+    
+}
+
+.table th, .table td {
+    font-family: ScalaSans, sans-serif;
+    font-size: 8.5pt;
+    padding: .25em;
+}
+
+.table th {
+    font-family: ScalaSansCaps, sans-serif;
+    font-weight: bold;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+   background-color: #d0e5b0;
+}
+
+/* Stat block styles 
+.stat-block h1 {
+    font-family: SmallCaps, serif;
+}
+*/
