@@ -9,21 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var villain_1 = require("./villain");
+var router_1 = require("@angular/router");
+var common_1 = require("@angular/common");
+var villain_js_1 = require("./villain.js");
+var villain_service_1 = require("./villain.service");
+require("rxjs/add/operator/switchMap");
 var VillainDetailComponent = (function () {
-    function VillainDetailComponent() {
+    function VillainDetailComponent(villainService, route, location) {
+        this.villainService = villainService;
+        this.route = route;
+        this.location = location;
     }
+    VillainDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params
+            .switchMap(function (params) { return _this.villainService.getVillain(+params['id']); })
+            .subscribe(function (villain) { return _this.villain = villain; });
+    };
+    VillainDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     return VillainDetailComponent;
 }());
 __decorate([
     core_1.Input(),
-    __metadata("design:type", villain_1.Villain)
+    __metadata("design:type", villain_js_1.Villain)
 ], VillainDetailComponent.prototype, "villain", void 0);
 VillainDetailComponent = __decorate([
     core_1.Component({
         selector: 'villain-detail',
-        template: "\n\t\t<div *ngIf=\"villain\">\n\t\t<h2>{{villain.name}} details!</h2>\n\t\t<div><label>id: </label>{{villain.id}}</div>\n\t\t<div>\n\t\t    <label>name: </label>\n\t\t    <input [(ngModel)]=\"villain.name\" placeholder=\"name\"/>\n\t\t</div>\n\t<div>\n\t"
-    })
+        templateUrl: './villain-detail.component.html'
+    }),
+    __metadata("design:paramtypes", [villain_service_1.VillainService,
+        router_1.ActivatedRoute,
+        common_1.Location])
 ], VillainDetailComponent);
 exports.VillainDetailComponent = VillainDetailComponent;
 //# sourceMappingURL=villain-detail.component.js.map

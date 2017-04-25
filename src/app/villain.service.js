@@ -6,9 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var mock_villains_1 = require("./mock-villains");
 var VillainService = (function () {
     function VillainService() {
     }
+    VillainService.prototype.getVillains = function () {
+        return Promise.resolve(mock_villains_1.VILLAINS);
+    };
+    VillainService.prototype.getVillain = function (id) {
+        return this.getVillains()
+            .then(function (villains) { return villains.find(function (villain) { return villain.id === id; }); });
+    };
     return VillainService;
 }());
 VillainService = __decorate([
