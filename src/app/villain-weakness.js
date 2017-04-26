@@ -1,6 +1,8 @@
 "use strict";
 var VillainWeakness = (function () {
-    function VillainWeakness() {
+    // see dmg page 96
+    function VillainWeakness(weakness) {
+        this.weakness = weakness;
     }
     return VillainWeakness;
 }());

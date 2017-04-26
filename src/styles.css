@@ -211,7 +211,7 @@ body {
     text-align: left;
 }
 
-tbody tr:nth-child(even) {
+tbody .striped tr:nth-child(even) {
    background-color: #d0e5b0;
 }
 
@@ -220,3 +220,39 @@ tbody tr:nth-child(even) {
     font-family: SmallCaps, serif;
 }
 */
+
+
+.bttn {
+    margin-top: 10px;
+    background: #e8e497;
+    background-image: -webkit-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: -moz-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: -ms-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: -o-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: linear-gradient(to bottom, #e8e497, #f0e7aa);
+    -webkit-border-radius: 20;
+    -moz-border-radius: 20;
+    border-radius: 20px;
+    text-shadow: 2px 1px 6px #666666;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    font-family: Arial;
+    color: #58170D;
+    font-size: 15px;
+    padding: 5px 8px 5px 8px;
+    border: solid #baaf93 3px;
+    text-decoration: none;
+}
+
+.btn:hover {
+  background: #e6e3a8;
+  background-image: -webkit-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: -moz-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: -ms-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: -o-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: linear-gradient(to bottom, #e6e3a8, #d6ce87);
+  text-decoration: none;
+}
+
+

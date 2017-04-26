@@ -12,13 +12,18 @@ var core_1 = require("@angular/core");
 var villain_service_1 = require("./villain.service");
 var scheme_service_1 = require("./scheme.service");
 var villain_method_service_1 = require("./villain-method.service");
+var villain_weakness_service_1 = require("./villain-weakness.service");
 var VillainsComponent = (function () {
-    function VillainsComponent(villainService, schemeService, villainMethodService) {
+    function VillainsComponent(villainService, schemeService, villainMethodService, villainWeaknessService) {
         this.villainService = villainService;
         this.schemeService = schemeService;
         this.villainMethodService = villainMethodService;
+        this.villainWeaknessService = villainWeaknessService;
     }
     VillainsComponent.prototype.ngOnInit = function () {
+        this.getRandomVillain();
+    };
+    VillainsComponent.prototype.getRandomVillain = function () {
         var _this = this;
         this.villainService.getRandomVillain()
             .then(function (villain) { return _this.randomVillain = villain; });
@@ -26,6 +31,8 @@ var VillainsComponent = (function () {
             .then(function (scheme) { return _this.randomVillain.scheme = scheme; });
         this.villainMethodService.getRandomVillainMethod()
             .then(function (method) { return _this.randomVillain.method = method; });
+        this.villainWeaknessService.getRandomWeakness()
+            .then(function (weakness) { return _this.randomVillain.weakness = weakness; });
     };
     return VillainsComponent;
 }());
@@ -33,11 +40,12 @@ VillainsComponent = __decorate([
     core_1.Component({
         selector: 'villains',
         templateUrl: './villains.component.html',
-        providers: [villain_service_1.VillainService, scheme_service_1.SchemeService, villain_method_service_1.VillainMethodService]
+        providers: [villain_service_1.VillainService, scheme_service_1.SchemeService, villain_method_service_1.VillainMethodService, villain_weakness_service_1.VillainWeaknessService]
     }),
     __metadata("design:paramtypes", [villain_service_1.VillainService,
         scheme_service_1.SchemeService,
-        villain_method_service_1.VillainMethodService])
+        villain_method_service_1.VillainMethodService,
+        villain_weakness_service_1.VillainWeaknessService])
 ], VillainsComponent);
 exports.VillainsComponent = VillainsComponent;
 /* Notes:
