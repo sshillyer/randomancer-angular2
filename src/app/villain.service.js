@@ -12,7 +12,6 @@ var VillainService = (function () {
     }
     VillainService.prototype.getRandomVillain = function () {
         var randomVillain = new villain_1.Villain();
-        randomVillain.randomize();
         return Promise.resolve(randomVillain);
     };
     return VillainService;

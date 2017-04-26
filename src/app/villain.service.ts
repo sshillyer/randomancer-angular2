@@ -6,7 +6,6 @@ import { Scheme } from './scheme';
 export class VillainService {
 	getRandomVillain(): Promise<Villain> {
 		let randomVillain = new Villain();
-		randomVillain.randomize();
 		return Promise.resolve(randomVillain);
 	}
 }
