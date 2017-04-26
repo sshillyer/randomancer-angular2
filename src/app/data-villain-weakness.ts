@@ -1,7 +1,7 @@
 import { VillainWeakness } from './villain-weakness';
 
 export const VILLAIN_WEAKNESSES: VillainWeakness[] = [
-    new VillainWeakness("A hidden object holds the vil lain's soul"),
+    new VillainWeakness("A hidden object holds the villain's soul"),
     new VillainWeakness("The villain's power is broken if the death of its true love is avenged."),
     new VillainWeakness("The villain is weakened in the presence of a particular artifact."),
     new VillainWeakness("A special weapon deals extra damage when used against the villain."),

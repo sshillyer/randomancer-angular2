@@ -1,7 +1,7 @@
 "use strict";
 var villain_weakness_1 = require("./villain-weakness");
 exports.VILLAIN_WEAKNESSES = [
-    new villain_weakness_1.VillainWeakness("A hidden object holds the vil lain's soul"),
+    new villain_weakness_1.VillainWeakness("A hidden object holds the villain's soul"),
     new villain_weakness_1.VillainWeakness("The villain's power is broken if the death of its true love is avenged."),
     new villain_weakness_1.VillainWeakness("The villain is weakened in the presence of a particular artifact."),
     new villain_weakness_1.VillainWeakness("A special weapon deals extra damage when used against the villain."),

@@ -211,7 +211,7 @@ body {
     text-align: left;
 }
 
-tbody .striped tr:nth-child(even) {
+.striped tr:nth-child(even) {
    background-color: #d0e5b0;
 }
 
@@ -245,7 +245,7 @@ tbody .striped tr:nth-child(even) {
     text-decoration: none;
 }
 
-.btn:hover {
+.bttn:hover {
   background: #e6e3a8;
   background-image: -webkit-linear-gradient(top, #e6e3a8, #d6ce87);
   background-image: -moz-linear-gradient(top, #e6e3a8, #d6ce87);
