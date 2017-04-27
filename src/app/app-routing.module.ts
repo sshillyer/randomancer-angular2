@@ -6,7 +6,7 @@ import { VillainsComponent }      from './villains.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'villains',     component: VillainsComponent }
 ];
 

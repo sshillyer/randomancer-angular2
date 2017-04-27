@@ -9,7 +9,7 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var villains_component_1 = require("./villains.component");
 var routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'villains', component: villains_component_1.VillainsComponent }
 ];
 var AppRoutingModule = (function () {

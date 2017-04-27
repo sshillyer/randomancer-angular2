@@ -1,4 +1,4 @@
-<h3>Random Villain</h3>
+<h3>Random Villain Generator</h3>
 <div *ngIf="randomVillain">
 	<!--<h3>Villain Details</h3>
 	<p><strong>Objective:</strong>   {{randomVillain.scheme.objective}}</p>
@@ -7,7 +7,7 @@
 	<p><strong>Technique: </strong>  {{randomVillain.method.specificMethod}}</p>-->
 
 	<div class="table">
-		<h1>Random Villain</h1>
+		<h1>Random Villain Details</h1>
 		<table class="striped">
 			<tr>
 				<th>Objective</th>
@@ -27,4 +27,11 @@
 	</div>
 </div>
 <button class="bttn" (click)="getRandomVillain()">Roll</button>
+<button class="bttn" (click)="getJSONstring()">Export to JSON</button>
+<button class="bttn" (click)="getHomebreweryString()">Export to Homebrewery Markdown</button>
+
+<div *ngIf="rawTextBlock">
+	<textarea rows="8" cols="75">{{rawTextBlock}}</textarea>
+</div>
+
 

@@ -8,6 +8,8 @@ import { VillainMethod } from './villain-method';
 import { VillainMethodService } from './villain-method.service';
 import { VillainWeaknessService } from './villain-weakness.service';
 
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser'; // used to export to JSON
+
 
 @Component({
 	selector: 'villains',
@@ -20,16 +22,20 @@ export class VillainsComponent implements OnInit {
 		private villainService: VillainService,
 		private schemeService: SchemeService,
 		private villainMethodService: VillainMethodService,
-		private villainWeaknessService: VillainWeaknessService
+		private villainWeaknessService: VillainWeaknessService,
+		private sanitizer: DomSanitizer // used to export to JSON
 	) {}
 
 	randomVillain: Villain;
+	downloadJsonHref: SafeUrl;
+	rawTextBlock: String;
 
 	ngOnInit(): void {
 		this.getRandomVillain();
 	}
 
 	getRandomVillain() : void {
+		this.rawTextBlock = null;
 		this.villainService.getRandomVillain()
 			.then(villain => this.randomVillain = villain);
 		this.schemeService.getRandomScheme()
@@ -39,6 +45,35 @@ export class VillainsComponent implements OnInit {
 		this.villainWeaknessService.getRandomWeakness()
 			.then(weakness => this.randomVillain.weakness = weakness);
 	}
+
+	getJSONstring(): void {
+		let villain = {
+			'objective' : this.randomVillain.scheme.objective,
+			'scheme' : this.randomVillain.scheme.specificScheme,
+			'methodology' : this.randomVillain.method.methodType,
+			'technique' : this.randomVillain.method.specificMethod,
+			'weakness' : this.randomVillain.weakness.weakness
+		}
+		this.rawTextBlock = JSON.stringify(villain, null, 2); // third param pretty prints
+	}
+
+	getHomebreweryString(): void {
+		this.rawTextBlock = `##### Random Villain Details
+<div class='wide'>
+| Objective | Scheme | Methodology | Technique | Weakness
+|:----------|:-------|:------------|:----------|:--------
+| ` + this.randomVillain.scheme.objective + `|` + this.randomVillain.scheme.specificScheme + `|` + this.randomVillain.method.methodType + `|` + this.randomVillain.method.specificMethod + `|` + this.randomVillain.weakness.weakness + `
+</div>
+`;
+	}
+
+	// generateDownloadJsonUri() {
+	// 	// Cite: http://stackoverflow.com/questions/42360665/angular2-to-export-download-json-file
+	// Doesn't seem to work
+    //     var theJSON = JSON.stringify(this.getJSONstring());
+    //     var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+    //     this.downloadJsonHref = uri;
+    // }
 }
 
 

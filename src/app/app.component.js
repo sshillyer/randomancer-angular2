@@ -6,6 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+// import { Villain } from './villain';
+// import { VillainService } from './villain.service';
+// import { Scheme } from './scheme';
+// import { SchemeService } from './scheme.service';
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Randomancer';

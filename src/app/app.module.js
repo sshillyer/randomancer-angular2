@@ -7,8 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var villains_component_1 = require("./villains.component");
+var villain_service_1 = require("./villain.service");
+// import { SchemeService } from './scheme.service';
+// import { VillainWeaknessService } from './villain-weakness.service';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -18,13 +22,23 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
+            router_1.RouterModule.forRoot([
+                {
+                    path: 'villains',
+                    component: villains_component_1.VillainsComponent
+                }
+            ])
         ],
         declarations: [
             app_component_1.AppComponent,
             villains_component_1.VillainsComponent,
         ],
-        providers: [],
-        bootstrap: [app_component_1.AppComponent]
+        providers: [
+            villain_service_1.VillainService,
+        ],
+        bootstrap: [
+            app_component_1.AppComponent
+        ],
     })
 ], AppModule);
 exports.AppModule = AppModule;
