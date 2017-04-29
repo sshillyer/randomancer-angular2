@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Villain } from './villain';
 import { VillainService } from './villain.service';
-import { Scheme } from './scheme';
+// import { Scheme } from './scheme';
 import { SchemeService } from './scheme.service';
-import { VillainMethod } from './villain-method';
+// import { VillainMethod } from './villain-method';
 import { VillainMethodService } from './villain-method.service';
 import { VillainWeaknessService } from './villain-weakness.service';
 
@@ -18,6 +18,10 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 })
 
 export class VillainsComponent implements OnInit {
+	randomVillain: Villain;
+	downloadJsonHref: SafeUrl;
+	rawTextBlock: String;
+
 	constructor(
 		private villainService: VillainService,
 		private schemeService: SchemeService,
@@ -26,15 +30,11 @@ export class VillainsComponent implements OnInit {
 		private sanitizer: DomSanitizer // used to export to JSON
 	) {}
 
-	randomVillain: Villain;
-	downloadJsonHref: SafeUrl;
-	rawTextBlock: String;
-
 	ngOnInit(): void {
 		this.getRandomVillain();
 	}
 
-	getRandomVillain() : void {
+	getRandomVillain(): void {
 		this.rawTextBlock = null;
 		this.villainService.getRandomVillain()
 			.then(villain => this.randomVillain = villain);
@@ -53,7 +53,7 @@ export class VillainsComponent implements OnInit {
 			'methodology' : this.randomVillain.method.methodType,
 			'technique' : this.randomVillain.method.specificMethod,
 			'weakness' : this.randomVillain.weakness.weakness
-		}
+		};
 		this.rawTextBlock = JSON.stringify(villain, null, 2); // third param pretty prints
 	}
 
@@ -62,7 +62,8 @@ export class VillainsComponent implements OnInit {
 <div class='wide'>
 | Objective | Scheme | Methodology | Technique | Weakness
 |:----------|:-------|:------------|:----------|:--------
-| ` + this.randomVillain.scheme.objective + `|` + this.randomVillain.scheme.specificScheme + `|` + this.randomVillain.method.methodType + `|` + this.randomVillain.method.specificMethod + `|` + this.randomVillain.weakness.weakness + `
+| ` + this.randomVillain.scheme.objective + `|` + this.randomVillain.scheme.specificScheme + `|` + this.randomVillain.method.methodType +
+ `|` + this.randomVillain.method.specificMethod + `|` + this.randomVillain.weakness.weakness + `
 </div>
 `;
 	}

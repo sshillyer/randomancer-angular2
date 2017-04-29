@@ -10,7 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var villain_service_1 = require("./villain.service");
+// import { Scheme } from './scheme';
 var scheme_service_1 = require("./scheme.service");
+// import { VillainMethod } from './villain-method';
 var villain_method_service_1 = require("./villain-method.service");
 var villain_weakness_service_1 = require("./villain-weakness.service");
 var platform_browser_1 = require("@angular/platform-browser"); // used to export to JSON
@@ -49,7 +51,8 @@ var VillainsComponent = (function () {
         this.rawTextBlock = JSON.stringify(villain, null, 2); // third param pretty prints
     };
     VillainsComponent.prototype.getHomebreweryString = function () {
-        this.rawTextBlock = "##### Random Villain Details\n<div class='wide'>\n| Objective | Scheme | Methodology | Technique | Weakness\n|:----------|:-------|:------------|:----------|:--------\n| " + this.randomVillain.scheme.objective + "|" + this.randomVillain.scheme.specificScheme + "|" + this.randomVillain.method.methodType + "|" + this.randomVillain.method.specificMethod + "|" + this.randomVillain.weakness.weakness + "\n</div>\n";
+        this.rawTextBlock = "##### Random Villain Details\n<div class='wide'>\n| Objective | Scheme | Methodology | Technique | Weakness\n|:----------|:-------|:------------|:----------|:--------\n| " + this.randomVillain.scheme.objective + "|" + this.randomVillain.scheme.specificScheme + "|" + this.randomVillain.method.methodType +
+            "|" + this.randomVillain.method.specificMethod + "|" + this.randomVillain.weakness.weakness + "\n</div>\n";
     };
     return VillainsComponent;
 }());
@@ -73,5 +76,5 @@ exports.VillainsComponent = VillainsComponent;
     2. add it to the providers array in @Component
     3. add it to the constructor to inject it into the AppComponent class
 
- */ 
+ */
 //# sourceMappingURL=villains.component.js.map

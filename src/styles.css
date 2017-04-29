@@ -107,6 +107,8 @@
 
 body {
     margin: 3em;
+    font-family: BookmaniaSub;
+    font-size: 10pt;
 }
 
 
@@ -145,11 +147,12 @@ h4 {
 
 /* Todo: h5 + h6? */
 
-
-.column {
-    width: 50%;
+.title {
+    font-size: 30pt;
+    margin-bottom: .5em;
+    border-bottom: solid #b5b353;
+    border-bottom-width: 3px;
 }
-
 
 
 /* * * * * * * * * * * * * *
@@ -157,7 +160,7 @@ h4 {
  * * * * * * * * * * * * * */
 p {
     font-family: BookmaniaSub, serif;
-    font-size: 9pt;
+    font-size: 10pt;
 }
 
 em {
@@ -170,9 +173,23 @@ strong {
 
 
 body {
-    background-image: url('../images/paper-bg.jpg');
+    background-image: url('/images/paper-bg.jpg');
     background-repeat: repeat;
 }
+
+/* * * * * * * * * * * * * *
+ * Links                   *
+ * * * * * * * * * * * * * */
+
+
+a {
+   color: #58170D;
+    text-decoration: none;
+/*    background-color: #d0e5b0;*/
+/*    font-style: italic;*/
+    font-weight: bold; 
+}
+
 
 
 
@@ -232,15 +249,15 @@ body {
     background-image: linear-gradient(to bottom, #e8e497, #f0e7aa);
     -webkit-border-radius: 20;
     -moz-border-radius: 20;
-    border-radius: 20px;
+    border-radius: 10px;
     text-shadow: 2px 1px 6px #666666;
     -webkit-box-shadow: 0px 1px 3px #666666;
     -moz-box-shadow: 0px 1px 3px #666666;
     box-shadow: 0px 1px 3px #666666;
     font-family: Arial;
     color: #58170D;
-    font-size: 15px;
-    padding: 5px 8px 5px 8px;
+    font-size: 12px;
+    padding: 3px 6px 3px 6px;
     border: solid #baaf93 3px;
     text-decoration: none;
 }
@@ -256,3 +273,35 @@ body {
 }
 
 
+.nav-tab {
+    margin-top: 10px;
+    background: #e8e497;
+    background-image: -webkit-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: -moz-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: -ms-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: -o-linear-gradient(top, #e8e497, #f0e7aa);
+    background-image: linear-gradient(to bottom, #e8e497, #f0e7aa);
+    -webkit-border-radius: 3;
+    -moz-border-radius: 3;
+    border-radius: 3px;
+    text-shadow: 2px 1px 6px #666666;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    font-family: Arial;
+    color: #58170D;
+    font-size: 20px;
+    padding: 5px 8px 5px 8px;
+    border: solid #baaf93 4px;
+    text-decoration: none;
+}
+
+.nav-tab:hover {
+  background: #e6e3a8;
+  background-image: -webkit-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: -moz-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: -ms-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: -o-linear-gradient(top, #e6e3a8, #d6ce87);
+  background-image: linear-gradient(to bottom, #e6e3a8, #d6ce87);
+  text-decoration: none;
+}
