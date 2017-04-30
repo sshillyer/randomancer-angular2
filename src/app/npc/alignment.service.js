@@ -6,18 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var data_villain_weakness_1 = require("./data-villain-weakness");
-var VillainWeaknessService = (function () {
-    function VillainWeaknessService() {
+var data_alignment_1 = require("./data-alignment");
+var AlignmentService = (function () {
+    function AlignmentService() {
     }
-    VillainWeaknessService.prototype.getRandomWeakness = function () {
-        var randomVillainWeakness = data_villain_weakness_1.VILLAIN_WEAKNESSES[Math.floor(Math.random() * data_villain_weakness_1.VILLAIN_WEAKNESSES.length)];
-        return Promise.resolve(randomVillainWeakness);
+    AlignmentService.prototype.getRandomAlignment = function () {
+        var randomAlignment = data_alignment_1.ALIGNMENTS[Math.floor(Math.random() * data_alignment_1.ALIGNMENTS.length)];
+        return Promise.resolve(randomAlignment);
     };
-    return VillainWeaknessService;
+    return AlignmentService;
 }());
-VillainWeaknessService = __decorate([
+AlignmentService = __decorate([
     core_1.Injectable()
-], VillainWeaknessService);
-exports.VillainWeaknessService = VillainWeaknessService;
-//# sourceMappingURL=villain-weakness.service.js.map
+], AlignmentService);
+exports.AlignmentService = AlignmentService;
+//# sourceMappingURL=alignment.service.js.map

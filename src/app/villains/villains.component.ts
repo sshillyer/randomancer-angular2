@@ -1,16 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { OnInit } from '@angular/core';
+
 import { Villain } from './villain';
 import { VillainService } from './villain.service';
-// import { Scheme } from './scheme';
 import { SchemeService } from './scheme.service';
-// import { VillainMethod } from './villain-method';
 import { VillainMethodService } from './villain-method.service';
 import { VillainWeaknessService } from './villain-weakness.service';
-
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser'; // used to export to JSON
 
-
+// 
 @Component({
 	selector: 'villains',
 	templateUrl: './villains.component.html',

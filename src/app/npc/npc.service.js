@@ -6,19 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var data_schemes_1 = require("./data-schemes");
-var SchemeService = (function () {
-    function SchemeService() {
+var npc_1 = require("./npc");
+var NpcService = (function () {
+    function NpcService() {
     }
-    SchemeService.prototype.getRandomScheme = function () {
-        var randomScheme = data_schemes_1.SCHEMES[Math.floor(Math.random() * data_schemes_1.SCHEMES.length)];
-        randomScheme.setRandomSpecificScheme();
-        return Promise.resolve(randomScheme);
+    NpcService.prototype.getRandomNpc = function () {
+        var randomNpc = new npc_1.Npc();
+        return Promise.resolve(randomNpc);
     };
-    return SchemeService;
+    return NpcService;
 }());
-SchemeService = __decorate([
+NpcService = __decorate([
     core_1.Injectable()
-], SchemeService);
-exports.SchemeService = SchemeService;
-//# sourceMappingURL=scheme.service.js.map
+], NpcService);
+exports.NpcService = NpcService;
+//# sourceMappingURL=npc.service.js.map

@@ -11,8 +11,8 @@ var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var villains_component_1 = require("./villains/villains.component");
 var villain_service_1 = require("./villains/villain.service");
-// import { SchemeService } from './scheme.service';
-// import { VillainWeaknessService } from './villain-weakness.service';
+var npc_component_1 = require("./npc/npc.component");
+// import { NpcService } from './npc/npc.service';
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,12 +26,17 @@ AppModule = __decorate([
                 {
                     path: 'villains',
                     component: villains_component_1.VillainsComponent
+                },
+                {
+                    path: 'npc',
+                    component: npc_component_1.NpcComponent
                 }
             ])
         ],
         declarations: [
             app_component_1.AppComponent,
             villains_component_1.VillainsComponent,
+            npc_component_1.NpcComponent
         ],
         providers: [
             villain_service_1.VillainService,

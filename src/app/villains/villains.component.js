@@ -10,12 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var villain_service_1 = require("./villain.service");
-// import { Scheme } from './scheme';
 var scheme_service_1 = require("./scheme.service");
-// import { VillainMethod } from './villain-method';
 var villain_method_service_1 = require("./villain-method.service");
 var villain_weakness_service_1 = require("./villain-weakness.service");
 var platform_browser_1 = require("@angular/platform-browser"); // used to export to JSON
+// 
 var VillainsComponent = (function () {
     function VillainsComponent(villainService, schemeService, villainMethodService, villainWeaknessService, sanitizer // used to export to JSON
     ) {

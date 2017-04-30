@@ -6,18 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var villain_1 = require("./villain");
-var VillainService = (function () {
-    function VillainService() {
+var data_race_1 = require("./data-race");
+var RaceService = (function () {
+    function RaceService() {
     }
-    VillainService.prototype.getRandomVillain = function () {
-        var randomVillain = new villain_1.Villain();
-        return Promise.resolve(randomVillain);
+    RaceService.prototype.getRandomRace = function () {
+        var randomRace = data_race_1.RACES[Math.floor(Math.random() * data_race_1.RACES.length)];
+        return Promise.resolve(randomRace);
     };
-    return VillainService;
+    return RaceService;
 }());
-VillainService = __decorate([
+RaceService = __decorate([
     core_1.Injectable()
-], VillainService);
-exports.VillainService = VillainService;
-//# sourceMappingURL=villain.service.js.map
+], RaceService);
+exports.RaceService = RaceService;
+//# sourceMappingURL=race.service.js.map

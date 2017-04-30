@@ -1,7 +1,10 @@
 <h1 class="title">{{title}}</h1>
-<nav>
-	<a routerLink="/villains" class="nav-tab">Villains</a>
-	<a routerLink="/npcs" class="nav-tab">NPCs</a>
-</nav>
-
- <router-outlet></router-outlet> 
+<div class="navigation">
+	<nav>
+		<a routerLink="/villains" class="nav-tab">Villain</a>
+		<a routerLink="/npc" class="nav-tab">NPC</a>
+	</nav>
+</div>
+<div>
+	<router-outlet></router-outlet> 
+</div>

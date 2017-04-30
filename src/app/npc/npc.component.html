@@ -1,0 +1,36 @@
+<h1>Random NPC Generator</h1>
+
+
+
+<div *ngIf="randomNpc">
+	<div class="statblock">
+		<h2>Generated Name Goes Here</h2>
+		<br /><em>{{randomNpc.race.sizeString}} {{randomNpc.race.name}}, {{randomNpc.alignment.alignment}}</em>
+		<br /><strong>Armor Class</strong> {{randomNpc.armorClass}} >>> TODO AC# (armor)
+		<br /><strong>Hit Points</strong> TODO: Average, roll and conModifier
+		<br /><strong>Speed</strong> {{randomNpc.race.speed}}
+
+		<div class="attribute-table">
+			<table>
+				<tr><th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th></tr>
+				<tr><td>{{randomNpc.attributes.strength}}</td><td>{{randomNpc.attributes.dexterity}}</td><td>{{randomNpc.attributes.constitution}}</td><td>{{randomNpc.attributes.intelligence}}</td><td>{{randomNpc.attributes.wisdom}}</td><td>{{randomNpc.attributes.charisma}}</td></tr>
+			</table>
+		<div>
+		
+		<br /><strong>Skills </strong>
+		<br /><strong>Senses </strong> passive Perception: TODO, {{randomNpc.race.senses}}
+		<br /><strong>Languages </strong>
+		<br /><strong>Challenge </strong>
+
+		<h3>Actions</h3>
+		<br /><strong>Todo.</strong>This will be populated based on the random weapon.
+	</div>
+</div>
+
+<button class="bttn" (click)="getRandomNpc()">Roll</button>
+<button class="bttn" (click)="getJSONstring()">JSON</button>
+<button class="bttn" (click)="getHomebreweryString()">Homebrewery Markdown</button>
+
+<div *ngIf="rawTextBlock">
+	<textarea rows="8" cols="75">{{rawTextBlock}}</textarea>
+</div>

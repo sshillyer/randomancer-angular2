@@ -232,6 +232,20 @@ a {
    background-color: #d0e5b0;
 }
 
+.attribute-table table {
+    font-family: BookmaniaSub;
+    font-size: 11pt;
+    text-align: center;
+}
+
+.attribute-table th, .attribute-table td {
+    padding: .2em;
+}
+
+.attribute-table th {
+    font-weight: bold;
+}
+
 /* Stat block styles 
 .stat-block h1 {
     font-family: SmallCaps, serif;
@@ -272,6 +286,9 @@ a {
   text-decoration: none;
 }
 
+.navigation {
+    margin-bottom: 2em;
+}
 
 .nav-tab {
     margin-top: 10px;

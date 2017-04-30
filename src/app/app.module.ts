@@ -7,10 +7,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent }  from './app.component';
 import { VillainsComponent } from './villains/villains.component';
 import { VillainService } from './villains/villain.service';
-// import { SchemeService } from './scheme.service';
-// import { VillainWeaknessService } from './villain-weakness.service';
-
-
+import { NpcComponent } from './npc/npc.component';
+// import { NpcService } from './npc/npc.service';
 
 @NgModule({
   imports:      [
@@ -19,16 +17,21 @@ import { VillainService } from './villains/villain.service';
       {
         path: 'villains',
         component: VillainsComponent
+      },
+      {
+        path: 'npc',
+        component: NpcComponent
       }
     ])
   ],
   declarations: [
-  	AppComponent,
-  	VillainsComponent,
-
+    AppComponent,
+    VillainsComponent,
+    NpcComponent
   ],
   providers: [
-  	VillainService,
+    VillainService,
+    // NpcService
   ],
   bootstrap:    [
     AppComponent
