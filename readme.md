@@ -11,7 +11,7 @@ This is a Work in Progress.
 ## Usage
 #### npm start  
 transpiles the code then runs the app in a browser
-#### ng build --prod --base-href "https://sshillyer.github.io/randomancer-angular2"
+#### ng build --prod --base-href "https://sshillyer.github.io/"
 Build the project for distribution at the URL given. Uses https://github.com/angular-buch/angular-cli-ghpages
 #### ngh 
 Pushes the dist folder to the gh-pages branch of the github repository. Makes project available on the github.io page.

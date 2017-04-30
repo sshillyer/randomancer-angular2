@@ -13,7 +13,7 @@ import { VillainService } from './villain.service';
 
 
 @NgModule({
-  imports:      [ 
+  imports:      [
     BrowserModule,
     RouterModule.forRoot([
       {
@@ -22,7 +22,7 @@ import { VillainService } from './villain.service';
       }
     ])
   ],
-  declarations: [ 
+  declarations: [
   	AppComponent,
   	VillainsComponent,
 
@@ -30,8 +30,8 @@ import { VillainService } from './villain.service';
   providers: [
   	VillainService,
   ],
-  bootstrap:    [ 
-    AppComponent 
+  bootstrap:    [
+    AppComponent
   ],
 
 })

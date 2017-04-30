@@ -1,0 +1,31 @@
+<h3>Random Villain Generator</h3>
+<div *ngIf="randomVillain">
+	<div class="table">
+		<h1>Random Villain Details</h1>
+		<table class="striped">
+			<tr>
+				<th>Objective</th>
+				<th>Scheme</th>
+				<th>Methodology</th>
+				<th>Technique</th>
+				<th>Weakness</th>
+			</tr>
+			<tr>
+				<td>{{randomVillain.scheme.objective}}</td>
+				<td>{{randomVillain.scheme.specificScheme}}</td>
+				<td>{{randomVillain.method.methodType}}</td>
+				<td>{{randomVillain.method.specificMethod}}</td>
+				<td>{{randomVillain.weakness.weakness}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<button class="bttn" (click)="getRandomVillain()">Roll</button>
+<button class="bttn" (click)="getJSONstring()">Export to JSON</button>
+<button class="bttn" (click)="getHomebreweryString()">Export to Homebrewery Markdown</button>
+
+<div *ngIf="rawTextBlock">
+	<textarea rows="8" cols="75">{{rawTextBlock}}</textarea>
+</div>
+
+
