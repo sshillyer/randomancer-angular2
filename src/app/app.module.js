@@ -9,8 +9,8 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
-var villains_component_1 = require("./villains.component");
-var villain_service_1 = require("./villain.service");
+var villains_component_1 = require("./villains/villains.component");
+var villain_service_1 = require("./villains/villain.service");
 // import { SchemeService } from './scheme.service';
 // import { VillainWeaknessService } from './villain-weakness.service';
 var AppModule = (function () {

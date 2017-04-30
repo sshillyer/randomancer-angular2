@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var villains_component_1 = require("./villains.component");
+var villains_component_1 = require("./villains/villains.component");
 var routes = [
     // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'villains', component: villains_component_1.VillainsComponent }

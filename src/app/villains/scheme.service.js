@@ -6,17 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Randomancer';
+var data_schemes_1 = require("./data-schemes");
+var SchemeService = (function () {
+    function SchemeService() {
     }
-    return AppComponent;
+    SchemeService.prototype.getRandomScheme = function () {
+        var randomScheme = data_schemes_1.SCHEMES[Math.floor(Math.random() * data_schemes_1.SCHEMES.length)];
+        randomScheme.setRandomSpecificScheme();
+        return Promise.resolve(randomScheme);
+    };
+    return SchemeService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: "./app.component.html"
-    })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+SchemeService = __decorate([
+    core_1.Injectable()
+], SchemeService);
+exports.SchemeService = SchemeService;
+//# sourceMappingURL=scheme.service.js.map

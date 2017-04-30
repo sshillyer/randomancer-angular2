@@ -6,17 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Randomancer';
+var villain_1 = require("./villain");
+var VillainService = (function () {
+    function VillainService() {
     }
-    return AppComponent;
+    VillainService.prototype.getRandomVillain = function () {
+        var randomVillain = new villain_1.Villain();
+        return Promise.resolve(randomVillain);
+    };
+    return VillainService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: "./app.component.html"
-    })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+VillainService = __decorate([
+    core_1.Injectable()
+], VillainService);
+exports.VillainService = VillainService;
+//# sourceMappingURL=villain.service.js.map

@@ -2,7 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { VillainsComponent }      from './villains.component';
+import { VillainsComponent }      from './villains/villains.component';
 
 
 const routes: Routes = [
