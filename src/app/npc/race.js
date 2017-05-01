@@ -8,7 +8,7 @@ var Race = (function () {
         this.attributeModifiers = attMods;
         this.speed = speed;
         this.senses = senses;
-        this.languageProficiencies = languages;
+        this.languages = languages;
     }
     Race.prototype.getSizeString = function (size) {
         if (size === size_1.Size.Large) {

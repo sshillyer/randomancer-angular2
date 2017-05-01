@@ -12,7 +12,7 @@ var app_component_1 = require("./app.component");
 var villains_component_1 = require("./villains/villains.component");
 var villain_service_1 = require("./villains/villain.service");
 var npc_component_1 = require("./npc/npc.component");
-// import { NpcService } from './npc/npc.service';
+var npc_service_1 = require("./npc/npc.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -40,6 +40,7 @@ AppModule = __decorate([
         ],
         providers: [
             villain_service_1.VillainService,
+            npc_service_1.NpcService
         ],
         bootstrap: [
             app_component_1.AppComponent

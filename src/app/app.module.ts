@@ -8,7 +8,7 @@ import { AppComponent }  from './app.component';
 import { VillainsComponent } from './villains/villains.component';
 import { VillainService } from './villains/villain.service';
 import { NpcComponent } from './npc/npc.component';
-// import { NpcService } from './npc/npc.service';
+import { NpcService } from './npc/npc.service';
 
 @NgModule({
   imports:      [
@@ -31,7 +31,7 @@ import { NpcComponent } from './npc/npc.component';
   ],
   providers: [
     VillainService,
-    // NpcService
+    NpcService
   ],
   bootstrap:    [
     AppComponent

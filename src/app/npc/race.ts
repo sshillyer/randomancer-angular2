@@ -8,7 +8,7 @@ export class Race {
     attributeModifiers: AttributeDictionary;
     speed: string;
     senses: string;
-    languageProficiencies: string;
+    languages: string;
 
     constructor(n: string, size: Size, attMods: AttributeDictionary, speed: string, senses: string, languages: string) {
         this.name = n;
@@ -17,7 +17,7 @@ export class Race {
         this.attributeModifiers = attMods;
         this.speed = speed;
         this.senses = senses;
-        this.languageProficiencies = languages;
+        this.languages = languages;
     }
 
     getSizeString(size: Size): string{

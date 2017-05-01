@@ -25,7 +25,7 @@ export const RACES: Race[] = [
         new AttributeDictionary(2, -2, 2, -2, 0, 0),
         '30 ft',
         '',
-        'Common, '
+        'Common, Giant'
     ),
     new Race(
         'Halfling',
@@ -81,6 +81,6 @@ export const RACES: Race[] = [
         new AttributeDictionary(-1, -1, -1, 1, 0, 2),
         '30 ft',
         'darkvision (60 ft)',
-        'Common, '
+        'Common, Infernal'
     ),
 ];
