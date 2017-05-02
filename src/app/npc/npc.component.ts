@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Npc } from './npc';
 import { NpcService } from './npc.service';
@@ -6,9 +6,10 @@ import { RaceService } from './race.service';
 import { AlignmentService } from './alignment.service';
 import { ProfessionService } from './profession.service';
 import { ArmorService } from './armor.service';
-import { Weapon } from './weapon';
+// import { Weapon } from './weapon';
 import { WeaponService } from './weapon.service';
-import { Armor } from './armor';
+// import { Armor } from './armor';
+import { CR_TABLE } from './data-cr-dictionary';
 
 @Component({
     selector: 'npc',
@@ -43,35 +44,32 @@ export class NpcComponent implements OnInit {
     getRandomNpc(): void {
         this.rawTextBlock = null;
         this.npcService.getRandomNpc()
-            .then(npc => this.randomNpc = npc);
+            .then(npc => this.randomNpc = npc)
+            .then(npc => {
+                // Proceed setting the npc's variables only once it exists
+                this.alignmentService.getRandomAlignment()
+                    .then(alignment => this.randomNpc.alignment = alignment);
 
-        // this.raceService.getRandomRace()
-        //     .then(race => this.randomNpc.race = race)
-        //     .then(race => {
-        //         this.randomNpc.updateAttributes(race.attributeModifiers);
-        //         this.randomNpc.setHitDie(race.size);
-        //     });
+                // Nest promise calls after setting profession as many things dependent on profession
+                this.professionService.getRandomProfession()
+                    .then(profession => this.randomNpc.profession = profession)
+                    .then(profession => {
+                        this.setMeleeWeapon(profession.meleeWeaponProficiencies);
+                        this.setRangedWeapon(profession.rangedWeaponProficiencies);
+                        this.randomNpc.updateAttributes(profession.attributeModifiers);
+                        this.randomNpc.challengeRating = CR_TABLE[profession.challengeRating];
 
-
-        this.alignmentService.getRandomAlignment()
-            .then(alignment => this.randomNpc.alignment = alignment);
-
-        this.professionService.getRandomProfession()
-            .then(profession => this.randomNpc.profession = profession)
-            .then(profession => {
-                this.setMeleeWeapon(profession.meleeWeaponProficiencies);
-                this.setRangedWeapon(profession.rangedWeaponProficiencies);
-                this.setArmor(profession.armorProficiencies);
-                this.randomNpc.updateAttributes(profession.attributeModifiers);
-                // copied from ~48 above
-                this.raceService.getRandomRace()
-                .then(race => this.randomNpc.race = race)
-                .then(race => {
-                    this.randomNpc.updateAttributes(race.attributeModifiers);
-                    this.randomNpc.setHitDie(race.size);
-                    this.setHitpointsString();
-                    this.randomNpc.setAverageHitpoints();
-               });
+                        // Must select race before safe to update attributes, set hd, armor, etc.
+                        this.raceService.getRandomRace()
+                        .then(race => this.randomNpc.race = race)
+                        .then(race => {
+                            this.randomNpc.updateAttributes(race.attributeModifiers);
+                            this.randomNpc.setHitDie(race.size);
+                            this.setArmor(profession.armorProficiencies);
+                            this.setHitpointsString();
+                            this.randomNpc.setAverageHitpoints();
+                        });
+                });
             });
     }
 
@@ -91,12 +89,12 @@ export class NpcComponent implements OnInit {
         this.armorService.getArmor(armorProficiencies)
         .then(armor => this.randomNpc.armor = armor)
         .then(armor =>
-            this.randomNpc.armorClass = armor.armorClassBase 
+            this.randomNpc.armorClass = armor.armorClassBase
             + Math.min( Math.floor((this.randomNpc.attributes['dexterity'] - 10) / 2), armor.armorClassDexMax));
     }
 
     setHitpointsString(): void {
-        let bonusHealth = Math.floor((this.randomNpc.attributes['constitution'] - 10) / 2);
+        let bonusHealth = Math.floor((this.randomNpc.attributes['constitution'] - 10) / 2) * this.randomNpc.challengeRating.hitDieQuantity;
         this.randomNpc.hitPoints = (this.randomNpc.challengeRating.hitDieQuantity.toString() + 'd'
             + this.randomNpc.hitDie.toString()
             + ((bonusHealth > 0) ? '+' + bonusHealth.toString() : ''));

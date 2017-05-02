@@ -61,7 +61,7 @@ export class Npc {
         let bonusHealth = Math.floor((this.attributes['constitution'] - 10) / 2);
         let minRoll = 1 + bonusHealth;
         let maxRoll = this.hitDie + bonusHealth;
-        this.averageHitPoints = numHd * Math.floor( (minRoll + maxRoll) / 2);
+        this.averageHitPoints = Math.floor( numHd * (minRoll + maxRoll) / 2);
     }
 
 }

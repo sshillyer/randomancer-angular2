@@ -5,7 +5,7 @@
 <div *ngIf="randomNpc">
 	<div class="statblock">
 		<h2>{{randomNpc.profession.name}}</h2>
-		<br /><em>{{randomNpc.race.sizeString}} {{randomNpc.race.name}}, {{randomNpc.alignment.alignment}}</em>
+		<em>{{randomNpc.race.sizeString}} {{randomNpc.race.name}}, {{randomNpc.alignment.alignment}}</em>
 		<br /><strong>Armor Class</strong> {{randomNpc.armorClass}} ({{randomNpc.armor.name}})
 		<br /><strong>Hit Points</strong> {{randomNpc.averageHitPoints}} ({{randomNpc.hitPoints}})
 		<br /><strong>Speed</strong> {{randomNpc.race.speed}}
@@ -20,10 +20,10 @@
 		<br /><strong>Skills </strong>
 		<br /><strong>Senses </strong> passive Perception: TODO, {{randomNpc.race.senses}}
 		<br /><strong>Languages </strong> {{randomNpc.race.languages}}
-		<br /><strong>Challenge </strong>
+		<br /><strong>Challenge </strong> {{randomNpc.challengeRating.label}}
 
 		<h3>Actions</h3>
-		<br /><strong>{{randomNpc.meleeWeapon.name}}.</strong> This is the melee weapon.
+		<strong>{{randomNpc.meleeWeapon.name}}.</strong> This is the melee weapon.
 		<br /><strong>{{randomNpc.rangedWeapon.name}}.</strong> This is the ranged weapon.
 	</div>
 </div>

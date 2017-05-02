@@ -8,7 +8,8 @@ export const PROFESSIONS: Profession[] = [
         ['battleaxe', 'flail', 'greataxe', 'greatsword', 'maul', 'trident', 'warhammer', 'whip'],
         ['sling', 'longbow'],
         ['hide', 'chain shirt', 'half plate', 'studded leather'],
-        ['athletics', 'performance', 'intimidation']
+        ['athletics', 'performance', 'intimidation'],
+        '1',
     ),
     new Profession(
         'Knight',
@@ -16,6 +17,7 @@ export const PROFESSIONS: Profession[] = [
         ['battleaxe', 'flail', 'greataxe', 'greatsword', 'maul', 'trident', 'warhammer', 'whip'],
         ['sling', 'longbow'],
         ['chain shirt', 'breast plate', 'half plate', 'ring mail', 'chain mail', 'splint', 'plate'],
-        ['athletics', 'performance', 'intimidation']
+        ['athletics', 'performance', 'intimidation'],
+        '2',
     ),
 ];

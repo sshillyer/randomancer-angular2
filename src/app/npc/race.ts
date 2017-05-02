@@ -20,7 +20,7 @@ export class Race {
         this.languages = languages;
     }
 
-    getSizeString(size: Size): string{
+    getSizeString(size: Size): string {
         if (size === Size.Large) {
             return 'Large';
         } else if (size === Size.Medium) {

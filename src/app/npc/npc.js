@@ -35,7 +35,7 @@ var Npc = (function () {
         var bonusHealth = Math.floor((this.attributes['constitution'] - 10) / 2);
         var minRoll = 1 + bonusHealth;
         var maxRoll = this.hitDie + bonusHealth;
-        this.averageHitPoints = numHd * Math.floor((minRoll + maxRoll) / 2);
+        this.averageHitPoints = Math.floor(numHd * (minRoll + maxRoll) / 2);
     };
     return Npc;
 }());

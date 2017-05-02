@@ -14,7 +14,10 @@ var race_service_1 = require("./race.service");
 var alignment_service_1 = require("./alignment.service");
 var profession_service_1 = require("./profession.service");
 var armor_service_1 = require("./armor.service");
+// import { Weapon } from './weapon';
 var weapon_service_1 = require("./weapon.service");
+// import { Armor } from './armor';
+var data_cr_dictionary_1 = require("./data-cr-dictionary");
 var NpcComponent = (function () {
     function NpcComponent(npcService, raceService, alignmentService, professionService, armorService, weaponService) {
         this.npcService = npcService;
@@ -31,30 +34,29 @@ var NpcComponent = (function () {
         var _this = this;
         this.rawTextBlock = null;
         this.npcService.getRandomNpc()
-            .then(function (npc) { return _this.randomNpc = npc; });
-        // this.raceService.getRandomRace()
-        //     .then(race => this.randomNpc.race = race)
-        //     .then(race => {
-        //         this.randomNpc.updateAttributes(race.attributeModifiers);
-        //         this.randomNpc.setHitDie(race.size);
-        //     });
-        this.alignmentService.getRandomAlignment()
-            .then(function (alignment) { return _this.randomNpc.alignment = alignment; });
-        this.professionService.getRandomProfession()
-            .then(function (profession) { return _this.randomNpc.profession = profession; })
-            .then(function (profession) {
-            _this.setMeleeWeapon(profession.meleeWeaponProficiencies);
-            _this.setRangedWeapon(profession.rangedWeaponProficiencies);
-            _this.setArmor(profession.armorProficiencies);
-            _this.randomNpc.updateAttributes(profession.attributeModifiers);
-            // copied from ~48 above
-            _this.raceService.getRandomRace()
-                .then(function (race) { return _this.randomNpc.race = race; })
-                .then(function (race) {
-                _this.randomNpc.updateAttributes(race.attributeModifiers);
-                _this.randomNpc.setHitDie(race.size);
-                _this.setHitpointsString();
-                _this.randomNpc.setAverageHitpoints();
+            .then(function (npc) { return _this.randomNpc = npc; })
+            .then(function (npc) {
+            // Proceed setting the npc's variables only once it exists
+            _this.alignmentService.getRandomAlignment()
+                .then(function (alignment) { return _this.randomNpc.alignment = alignment; });
+            // Nest promise calls after setting profession as many things dependent on profession
+            _this.professionService.getRandomProfession()
+                .then(function (profession) { return _this.randomNpc.profession = profession; })
+                .then(function (profession) {
+                _this.setMeleeWeapon(profession.meleeWeaponProficiencies);
+                _this.setRangedWeapon(profession.rangedWeaponProficiencies);
+                _this.randomNpc.updateAttributes(profession.attributeModifiers);
+                _this.randomNpc.challengeRating = data_cr_dictionary_1.CR_TABLE[profession.challengeRating];
+                // Must select race before safe to update attributes, set hd, armor, etc.
+                _this.raceService.getRandomRace()
+                    .then(function (race) { return _this.randomNpc.race = race; })
+                    .then(function (race) {
+                    _this.randomNpc.updateAttributes(race.attributeModifiers);
+                    _this.randomNpc.setHitDie(race.size);
+                    _this.setArmor(profession.armorProficiencies);
+                    _this.setHitpointsString();
+                    _this.randomNpc.setAverageHitpoints();
+                });
             });
         });
     };
@@ -79,7 +81,7 @@ var NpcComponent = (function () {
         });
     };
     NpcComponent.prototype.setHitpointsString = function () {
-        var bonusHealth = Math.floor((this.randomNpc.attributes['constitution'] - 10) / 2);
+        var bonusHealth = Math.floor((this.randomNpc.attributes['constitution'] - 10) / 2) * this.randomNpc.challengeRating.hitDieQuantity;
         this.randomNpc.hitPoints = (this.randomNpc.challengeRating.hitDieQuantity.toString() + 'd'
             + this.randomNpc.hitDie.toString()
             + ((bonusHealth > 0) ? '+' + bonusHealth.toString() : ''));
