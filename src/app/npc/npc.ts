@@ -58,10 +58,10 @@ export class Npc {
 
     setAverageHitpoints(): void {
         let numHd = this.challengeRating.hitDieQuantity;
-        let bonusHealth = Math.floor(this.attributes['constitution'] - 10 / 2);
+        let bonusHealth = Math.floor((this.attributes['constitution'] - 10) / 2);
         let minRoll = 1 + bonusHealth;
         let maxRoll = this.hitDie + bonusHealth;
-        this.averageHitPoints = numHd * Math.min((minRoll + maxRoll) / 2);
+        this.averageHitPoints = numHd * Math.floor( (minRoll + maxRoll) / 2);
     }
 
 }
