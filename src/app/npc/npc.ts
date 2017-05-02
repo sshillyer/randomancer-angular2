@@ -1,6 +1,7 @@
 import { Alignment } from './alignment';
 import { Race } from './race';
 import { Profession } from './profession';
+import { Attribute } from './attribute';
 import { AttributeDictionary } from './attribute-dictionary';
 import { SkillDictionary } from './skill-dictionary';
 import { Action } from './action';
@@ -9,7 +10,8 @@ import { Weapon } from './weapon';
 import { Size } from './size';
 import { ChallengeRating } from './challenge-rating';
 import { CR_TABLE } from './data-cr-dictionary';
-
+import { Proficiency } from './proficiency';
+import { PROFICIENCIES } from './data-proficiencies';
 
 export class Npc {
     name: string;
@@ -21,8 +23,9 @@ export class Npc {
     hitPoints: string; // generated from profession.hitDie + con bonus, calc average then put hd in parens
     averageHitPoints: number;
     hitDie: number;
-    attributes: AttributeDictionary; // attribute => 10 + race.attributeModifers + profession.attributeModifers
-    skillProficiencies: SkillDictionary; // boolean dictionary lookups in O(1) time
+    attributes: AttributeDictionary;
+    skillProficiencies: Proficiency[] = [];
+    skillsString: String;
     senses: string; // Passive Perception + race.senses
     actions: Action[];
     meleeWeapon: Weapon;
@@ -64,4 +67,43 @@ export class Npc {
         this.averageHitPoints = Math.floor( numHd * (minRoll + maxRoll) / 2);
     }
 
+    setSkillProficiencies(skills: string[]): void {
+        for (let i = 0; i < skills.length; i++) {
+            this.skillProficiencies.push(PROFICIENCIES[skills[i]]);
+        }
+        this.setSkillsString();
+    }
+
+    setSkillsString(): void {
+        let result = '';
+        for (let i = 0; i < this.skillProficiencies.length; i++) {
+            result += this.skillProficiencies[i].name + this.getSkillBonus(this.skillProficiencies[i].primaryAttribute);
+            if (i < this.skillProficiencies.length - 1){
+                result += ', ';
+            }
+        }
+        this.skillsString = result;
+    }
+
+    getSkillBonus(attribute: Attribute): string {
+        let aStr = '';
+        if (attribute === Attribute.Strength) {
+            aStr = 'strength';
+        } else if (attribute === Attribute.Dexterity) {
+            aStr = 'dexterity';
+        } else if (attribute === Attribute.Constitution) {
+            aStr = 'constitution';
+        } else if (attribute === Attribute.Intelligence) {
+            aStr = 'intelligence';
+        } else if (attribute === Attribute.Wisdom) {
+            aStr = 'wisdom';
+        } else if (attribute === Attribute.Charisma) {
+            aStr = 'charisma';
+        }
+
+        let baseScore = this.attributes[aStr];
+        let bonus = Math.floor((baseScore - 10) / 2) + this.challengeRating.profBonus;
+        let str = (bonus > 0) ? (' +' + bonus.toString()) : (' -' + bonus.toString());
+        return str;
+    }
 }

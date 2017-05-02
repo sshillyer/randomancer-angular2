@@ -46,6 +46,7 @@ var NpcComponent = (function () {
                 _this.setMeleeWeapon(profession.meleeWeaponProficiencies);
                 _this.setRangedWeapon(profession.rangedWeaponProficiencies);
                 _this.randomNpc.updateAttributes(profession.attributeModifiers);
+                _this.randomNpc.setSkillProficiencies(profession.skillProficiencies);
                 _this.randomNpc.challengeRating = data_cr_dictionary_1.CR_TABLE[profession.challengeRating];
                 // Must select race before safe to update attributes, set hd, armor, etc.
                 _this.raceService.getRandomRace()

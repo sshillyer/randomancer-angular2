@@ -57,6 +57,7 @@ export class NpcComponent implements OnInit {
                         this.setMeleeWeapon(profession.meleeWeaponProficiencies);
                         this.setRangedWeapon(profession.rangedWeaponProficiencies);
                         this.randomNpc.updateAttributes(profession.attributeModifiers);
+                        this.randomNpc.setSkillProficiencies(profession.skillProficiencies);
                         this.randomNpc.challengeRating = CR_TABLE[profession.challengeRating];
 
                         // Must select race before safe to update attributes, set hd, armor, etc.

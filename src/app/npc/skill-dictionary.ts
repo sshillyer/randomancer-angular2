@@ -1,20 +1,23 @@
 export class SkillDictionary {
-    acrobatics: boolean;
-    animalHandling: boolean;
-    arcana: boolean;
-    athletics: boolean;
-    deception: boolean;
-    history: boolean;
-    insight: boolean;
-    intimidation: boolean;
-    investigation: boolean;
-    medicine: boolean;
-    nature: boolean;
-    perception: boolean;
-    performance: boolean;
-    persuasion: boolean;
-    religion: boolean;
-    sleightOfHand: boolean;
-    stealth: boolean;
-    survival: boolean;
+
+    constructor(
+        public acrobatics: boolean,
+        public animalHandling: boolean,
+        public arcana: boolean,
+        public athletics: boolean,
+        public deception: boolean,
+        public history: boolean,
+        public insight: boolean,
+        public intimidation: boolean,
+        public investigation: boolean,
+        public medicine: boolean,
+        public nature: boolean,
+        public perception: boolean,
+        public performance: boolean,
+        public persuasion: boolean,
+        public religion: boolean,
+        public sleightOfHand: boolean,
+        public stealth: boolean,
+        public survival: boolean,
+    ) {}
 }
