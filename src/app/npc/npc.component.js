@@ -30,11 +30,14 @@ var NpcComponent = (function () {
     NpcComponent.prototype.getRandomNpc = function () {
         var _this = this;
         this.rawTextBlock = null;
-        // this.randomNpc = new Npc();
         this.npcService.getRandomNpc()
             .then(function (npc) { return _this.randomNpc = npc; });
-        this.raceService.getRandomRace()
-            .then(function (race) { return _this.randomNpc.race = race; });
+        // this.raceService.getRandomRace()
+        //     .then(race => this.randomNpc.race = race)
+        //     .then(race => {
+        //         this.randomNpc.updateAttributes(race.attributeModifiers);
+        //         this.randomNpc.setHitDie(race.size);
+        //     });
         this.alignmentService.getRandomAlignment()
             .then(function (alignment) { return _this.randomNpc.alignment = alignment; });
         this.professionService.getRandomProfession()
@@ -43,12 +46,23 @@ var NpcComponent = (function () {
             _this.setMeleeWeapon(profession.meleeWeaponProficiencies);
             _this.setRangedWeapon(profession.rangedWeaponProficiencies);
             _this.setArmor(profession.armorProficiencies);
+            _this.randomNpc.updateAttributes(profession.attributeModifiers);
+            // copied from ~48 above
+            _this.raceService.getRandomRace()
+                .then(function (race) { return _this.randomNpc.race = race; })
+                .then(function (race) {
+                _this.randomNpc.updateAttributes(race.attributeModifiers);
+                _this.randomNpc.setHitDie(race.size);
+                _this.setHitpointsString();
+                _this.randomNpc.setAverageHitpoints();
+            });
         });
     };
     NpcComponent.prototype.setMeleeWeapon = function (meleeWeaponProficiencies) {
         var _this = this;
         this.weaponService.getWeapon(meleeWeaponProficiencies)
-            .then(function (weapon) { return _this.randomNpc.meleeWeapon = weapon; });
+            .then(function (weapon) { return _this.randomNpc.meleeWeapon = weapon; })
+            .then(function (weapon) { return _this.randomNpc.actions; });
     };
     NpcComponent.prototype.setRangedWeapon = function (rangedWeaponProficiencies) {
         var _this = this;
@@ -63,6 +77,12 @@ var NpcComponent = (function () {
             return _this.randomNpc.armorClass = armor.armorClassBase
                 + Math.min(Math.floor((_this.randomNpc.attributes['dexterity'] - 10) / 2), armor.armorClassDexMax);
         });
+    };
+    NpcComponent.prototype.setHitpointsString = function () {
+        var bonusHealth = Math.floor((this.randomNpc.attributes['constitution'] - 10) / 2);
+        this.randomNpc.hitPoints = (this.randomNpc.challengeRating.hitDieQuantity.toString() + 'd'
+            + this.randomNpc.hitDie.toString()
+            + ((bonusHealth > 0) ? '+' + bonusHealth.toString() : ''));
     };
     NpcComponent.prototype.getJSONstring = function () {
         this.rawTextBlock = 'TODO: Make JSON';

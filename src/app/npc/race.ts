@@ -30,6 +30,6 @@ export class Race {
         } else {
             return 'Something bad happened';
         }
-        
+
     }
 }

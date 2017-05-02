@@ -42,12 +42,16 @@ export class NpcComponent implements OnInit {
 
     getRandomNpc(): void {
         this.rawTextBlock = null;
-        // this.randomNpc = new Npc();
         this.npcService.getRandomNpc()
             .then(npc => this.randomNpc = npc);
 
-        this.raceService.getRandomRace()
-            .then(race => this.randomNpc.race = race);
+        // this.raceService.getRandomRace()
+        //     .then(race => this.randomNpc.race = race)
+        //     .then(race => {
+        //         this.randomNpc.updateAttributes(race.attributeModifiers);
+        //         this.randomNpc.setHitDie(race.size);
+        //     });
+
 
         this.alignmentService.getRandomAlignment()
             .then(alignment => this.randomNpc.alignment = alignment);
@@ -58,12 +62,24 @@ export class NpcComponent implements OnInit {
                 this.setMeleeWeapon(profession.meleeWeaponProficiencies);
                 this.setRangedWeapon(profession.rangedWeaponProficiencies);
                 this.setArmor(profession.armorProficiencies);
+                this.randomNpc.updateAttributes(profession.attributeModifiers);
+                // copied from ~48 above
+                this.raceService.getRandomRace()
+                .then(race => this.randomNpc.race = race)
+                .then(race => {
+                    this.randomNpc.updateAttributes(race.attributeModifiers);
+                    this.randomNpc.setHitDie(race.size);
+                    this.setHitpointsString();
+                    this.randomNpc.setAverageHitpoints();
+               });
             });
     }
 
+
     setMeleeWeapon(meleeWeaponProficiencies: string[]): void {
         this.weaponService.getWeapon(meleeWeaponProficiencies)
-        .then(weapon => this.randomNpc.meleeWeapon = weapon);
+        .then(weapon => this.randomNpc.meleeWeapon = weapon)
+        .then(weapon => this.randomNpc.actions);
     }
 
     setRangedWeapon(rangedWeaponProficiencies: string[]): void {
@@ -77,6 +93,13 @@ export class NpcComponent implements OnInit {
         .then(armor =>
             this.randomNpc.armorClass = armor.armorClassBase 
             + Math.min( Math.floor((this.randomNpc.attributes['dexterity'] - 10) / 2), armor.armorClassDexMax));
+    }
+
+    setHitpointsString(): void {
+        let bonusHealth = Math.floor((this.randomNpc.attributes['constitution'] - 10) / 2);
+        this.randomNpc.hitPoints = (this.randomNpc.challengeRating.hitDieQuantity.toString() + 'd'
+            + this.randomNpc.hitDie.toString()
+            + ((bonusHealth > 0) ? '+' + bonusHealth.toString() : ''));
     }
 
     getJSONstring(): void {
