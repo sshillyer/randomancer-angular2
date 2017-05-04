@@ -16,7 +16,7 @@ export const PROFESSIONS: Profession[] = [
         new AttributeDictionary(4, -2, 2, 0, 2, 1),
         ['battleaxe', 'flail', 'greataxe', 'greatsword', 'maul', 'trident', 'warhammer', 'whip'],
         ['sling', 'longbow'],
-        ['chain shirt', 'breast plate', 'half plate', 'ring mail', 'chain mail', 'splint', 'plate'],
+        ['chain shirt', 'breastplate', 'half plate', 'ring mail', 'chain mail', 'splint', 'plate'],
         ['athletics', 'persuasion', 'perception'],
         '2',
     ),
