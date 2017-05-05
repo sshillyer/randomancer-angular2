@@ -34,6 +34,6 @@ exports.WEAPONS = {
     'blowgun': new weapon_1.Weapon('Blowgun', 'Melee', 1, 4, 'piercing', 'dexterity', '25/100'),
     'hand crossbow': new weapon_1.Weapon('Crossbow, hand', 'Melee', 1, 6, 'piercing', 'dexterity', '30/120'),
     'heavy crossbow': new weapon_1.Weapon('Crossbow, heavy', 'Melee', 1, 10, 'piercing', 'dexterity', '100/400'),
-    'longbow': new weapon_1.Weapon('Longbow', 'Melee', 1, 8, 'piercing', 'dexterity', '150/600')
+    'longbow': new weapon_1.Weapon('Longbow', 'Ranged', 1, 8, 'piercing', 'dexterity', '150/600')
 };
 //# sourceMappingURL=data-weapons.js.map

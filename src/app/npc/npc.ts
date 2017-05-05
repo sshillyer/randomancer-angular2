@@ -122,9 +122,9 @@ export class Npc {
         }
 
         let attribute = null;
-        if (thisWeapon.damageType === 'strength') {
+        if (thisWeapon.primaryAttribute === 'strength') {
             attribute = this.attributes['strength'];
-        } else if (thisWeapon.damageType === 'dexterity') {
+        } else if (thisWeapon.primaryAttribute === 'dexterity') {
             attribute = this.attributes['dexterity'];
         } else  { // (thisWeapon.damageType === 'finesse')
             attribute = Math.max(this.attributes['strength'], this.attributes['dexterity']);

@@ -234,7 +234,7 @@ export const WEAPONS: { [id: string]: Weapon } = {
     ),
     'longbow': new Weapon(
         'Longbow',
-        'Melee',
+        'Ranged',
         1, 8, 'piercing',
         'dexterity',
         '150/600'

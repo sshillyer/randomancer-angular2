@@ -93,10 +93,10 @@ var Npc = (function () {
             thisWeapon = this.rangedWeapon;
         }
         var attribute = null;
-        if (thisWeapon.damageType === 'strength') {
+        if (thisWeapon.primaryAttribute === 'strength') {
             attribute = this.attributes['strength'];
         }
-        else if (thisWeapon.damageType === 'dexterity') {
+        else if (thisWeapon.primaryAttribute === 'dexterity') {
             attribute = this.attributes['dexterity'];
         }
         else {
