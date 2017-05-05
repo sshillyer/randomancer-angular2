@@ -10,6 +10,9 @@ var Npc = (function () {
         this.armorClass = 10;
         this.challengeRating = data_cr_dictionary_1.CR_TABLE['0'];
         this.attributes = new attribute_dictionary_1.AttributeDictionary(10, 10, 10, 10, 10, 10);
+        this.averageWeaponDamage = { 'melee': 0, 'ranged': 0 };
+        this.toHitBonus = { 'melee': 0, 'ranged': 0 };
+        this.weaponBonus = { 'melee': 0, 'ranged': 0 };
     }
     Npc.prototype.updateAttributes = function (modifier) {
         this.attributes['strength'] += modifier['strength'];
@@ -80,6 +83,44 @@ var Npc = (function () {
         var bonus = Math.floor((baseScore - 10) / 2) + this.challengeRating.profBonus;
         var str = (bonus > 0) ? (' +' + bonus.toString()) : (' -' + bonus.toString());
         return str;
+    };
+    Npc.prototype.getWeaponBonus = function (weaponType) {
+        var thisWeapon = null;
+        if (weaponType === 'melee') {
+            thisWeapon = this.meleeWeapon;
+        }
+        else if (weaponType === 'ranged') {
+            thisWeapon = this.rangedWeapon;
+        }
+        var attribute = null;
+        if (thisWeapon.damageType === 'strength') {
+            attribute = this.attributes['strength'];
+        }
+        else if (thisWeapon.damageType === 'dexterity') {
+            attribute = this.attributes['dexterity'];
+        }
+        else {
+            attribute = Math.max(this.attributes['strength'], this.attributes['dexterity']);
+        }
+        return Math.floor((attribute - 10) / 2);
+    };
+    Npc.prototype.setWeaponBonus = function (weaponType) {
+        this.weaponBonus[weaponType] = this.getWeaponBonus(weaponType);
+    };
+    Npc.prototype.setWeaponToHitBonus = function (weaponType) {
+        var bonus = this.getWeaponBonus(weaponType);
+        this.toHitBonus[weaponType] = bonus + this.challengeRating.profBonus;
+    };
+    Npc.prototype.setAverageWeaponDamage = function (weaponType) {
+        var thisWeapon = null;
+        if (weaponType === 'melee') {
+            thisWeapon = this.meleeWeapon;
+        }
+        else if (weaponType === 'ranged') {
+            thisWeapon = this.rangedWeapon;
+        }
+        var bonusDamage = this.getWeaponBonus(weaponType);
+        this.averageWeaponDamage[weaponType] = Math.floor((1 + bonusDamage + thisWeapon.dieSize + bonusDamage) / 2);
     };
     return Npc;
 }());

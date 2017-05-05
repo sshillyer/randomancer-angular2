@@ -30,12 +30,18 @@ export class Npc {
     actions: Action[];
     meleeWeapon: Weapon;
     rangedWeapon: Weapon;
+    averageWeaponDamage: { [id: string]: number }
+    toHitBonus: { [id: string]: number }
+    weaponBonus: { [id: string]: number }
     challengeRating: ChallengeRating;
 
     constructor() {
         this.armorClass = 10;
         this.challengeRating = CR_TABLE['0'];
         this.attributes = new AttributeDictionary(10, 10, 10, 10, 10, 10);
+        this.averageWeaponDamage = { 'melee': 0, 'ranged': 0};
+        this.toHitBonus = { 'melee': 0, 'ranged': 0};
+        this.weaponBonus= { 'melee': 0, 'ranged': 0};
     }
 
     updateAttributes(modifier: AttributeDictionary): void {
@@ -105,5 +111,44 @@ export class Npc {
         let bonus = Math.floor((baseScore - 10) / 2) + this.challengeRating.profBonus;
         let str = (bonus > 0) ? (' +' + bonus.toString()) : (' -' + bonus.toString());
         return str;
+    }
+
+    getWeaponBonus(weaponType: string): number {
+        let thisWeapon = null;
+        if (weaponType === 'melee') {
+            thisWeapon = this.meleeWeapon;
+        } else if (weaponType === 'ranged') {
+            thisWeapon = this.rangedWeapon;
+        }
+
+        let attribute = null;
+        if (thisWeapon.damageType === 'strength') {
+            attribute = this.attributes['strength'];
+        } else if (thisWeapon.damageType === 'dexterity') {
+            attribute = this.attributes['dexterity'];
+        } else  { // (thisWeapon.damageType === 'finesse')
+            attribute = Math.max(this.attributes['strength'], this.attributes['dexterity']);
+        }
+        return Math.floor((attribute - 10) / 2);
+    }
+
+    setWeaponBonus(weaponType: string): void {
+        this.weaponBonus[weaponType] = this.getWeaponBonus(weaponType);
+    }
+
+    setWeaponToHitBonus(weaponType: string): void {
+        let bonus = this.getWeaponBonus(weaponType);
+        this.toHitBonus[weaponType] = bonus + this.challengeRating.profBonus;
+    }
+
+    setAverageWeaponDamage(weaponType: string): void {
+        let thisWeapon = null;
+        if (weaponType === 'melee') {
+            thisWeapon = this.meleeWeapon;
+        } else if (weaponType === 'ranged') {
+            thisWeapon = this.rangedWeapon;
+        }
+        let bonusDamage = this.getWeaponBonus(weaponType);
+        this.averageWeaponDamage[weaponType] = Math.floor((1 + bonusDamage + thisWeapon.dieSize + bonusDamage) / 2);
     }
 }

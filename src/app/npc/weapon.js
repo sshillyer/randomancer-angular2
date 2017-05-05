@@ -9,6 +9,14 @@ var Weapon = (function () {
         this.primaryAttribute = primAtt;
         this.range = range;
     }
+    Weapon.prototype.getRangeString = function () {
+        if (this.range === '0') {
+            return 'reach 5 ft';
+        }
+        else {
+            return this.range;
+        }
+    };
     return Weapon;
 }());
 exports.Weapon = Weapon;

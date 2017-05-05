@@ -14,7 +14,6 @@ var race_service_1 = require("./race.service");
 var alignment_service_1 = require("./alignment.service");
 var profession_service_1 = require("./profession.service");
 var armor_service_1 = require("./armor.service");
-// import { Weapon } from './weapon';
 var weapon_service_1 = require("./weapon.service");
 // import { Armor } from './armor';
 var data_cr_dictionary_1 = require("./data-cr-dictionary");
@@ -57,6 +56,9 @@ var NpcComponent = (function () {
                     _this.setArmor(profession.armorProficiencies);
                     _this.setHitpointsString();
                     _this.randomNpc.setAverageHitpoints();
+                })
+                    .then(function (race) {
+                    return _this.setWeaponActionData();
                 });
             });
         });
@@ -64,8 +66,7 @@ var NpcComponent = (function () {
     NpcComponent.prototype.setMeleeWeapon = function (meleeWeaponProficiencies) {
         var _this = this;
         this.weaponService.getWeapon(meleeWeaponProficiencies)
-            .then(function (weapon) { return _this.randomNpc.meleeWeapon = weapon; })
-            .then(function (weapon) { return _this.randomNpc.actions; });
+            .then(function (weapon) { return _this.randomNpc.meleeWeapon = weapon; });
     };
     NpcComponent.prototype.setRangedWeapon = function (rangedWeaponProficiencies) {
         var _this = this;
@@ -86,6 +87,14 @@ var NpcComponent = (function () {
         this.randomNpc.hitPoints = (this.randomNpc.challengeRating.hitDieQuantity.toString() + 'd'
             + this.randomNpc.hitDie.toString()
             + ((bonusHealth > 0) ? '+' + bonusHealth.toString() : ''));
+    };
+    NpcComponent.prototype.setWeaponActionData = function () {
+        this.randomNpc.setWeaponBonus('melee');
+        this.randomNpc.setWeaponBonus('ranged');
+        this.randomNpc.setAverageWeaponDamage('melee');
+        this.randomNpc.setAverageWeaponDamage('ranged');
+        this.randomNpc.setWeaponToHitBonus('melee');
+        this.randomNpc.setWeaponToHitBonus('ranged');
     };
     NpcComponent.prototype.getJSONstring = function () {
         this.rawTextBlock = 'TODO: Make JSON';

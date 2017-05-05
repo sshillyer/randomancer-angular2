@@ -23,8 +23,8 @@
 		<br /><strong>Challenge </strong> {{randomNpc.challengeRating.label}}
 
 		<h3>Actions</h3>
-		<strong>{{randomNpc.meleeWeapon.name}}.</strong> This is the melee weapon.
-		<br /><strong>{{randomNpc.rangedWeapon.name}}.</strong> This is the ranged weapon.
+		<strong>{{randomNpc.meleeWeapon.name}}.</strong> <em>{{randomNpc.meleeWeapon.attackType}} Weapon Attack:</em> +{{randomNpc.toHitBonus['melee'] }} to hit, {{randomNpc.meleeWeapon.getRangeString()}}, one target. <em>Hit:</em> {{randomNpc.averageWeaponDamage['melee']}} ({{randomNpc.meleeWeapon.dieNumber}}d{{randomNpc.meleeWeapon.dieSize}} + {{randomNpc.weaponBonus['melee']}}) {{randomNpc.meleeWeapon.damageType}} damage.
+		<br /> 		<strong>{{randomNpc.rangedWeapon.name}}.</strong> <em>{{randomNpc.rangedWeapon.attackType}} Weapon Attack:</em> +{{randomNpc.toHitBonus['ranged'] }} to hit, {{randomNpc.rangedWeapon.getRangeString()}}, one target. <em>Hit:</em> {{randomNpc.averageWeaponDamage['ranged']}} ({{randomNpc.rangedWeapon.dieNumber}}d{{randomNpc.rangedWeapon.dieSize}} + {{randomNpc.weaponBonus['ranged']}}) {{randomNpc.rangedWeapon.damageType}} damage.
 	</div>
 </div>
 

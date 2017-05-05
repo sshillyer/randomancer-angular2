@@ -15,4 +15,14 @@ export class Weapon {
         this.primaryAttribute = primAtt;
         this.range = range;
     }
+
+    getRangeString(): string {
+        if (this.range === '0') {
+            return 'reach 5 ft';
+        } else {
+            return this.range;
+        }
+
+    }
+
 }

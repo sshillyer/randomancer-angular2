@@ -6,7 +6,7 @@ import { RaceService } from './race.service';
 import { AlignmentService } from './alignment.service';
 import { ProfessionService } from './profession.service';
 import { ArmorService } from './armor.service';
-// import { Weapon } from './weapon';
+import { Weapon } from './weapon';
 import { WeaponService } from './weapon.service';
 // import { Armor } from './armor';
 import { CR_TABLE } from './data-cr-dictionary';
@@ -43,6 +43,7 @@ export class NpcComponent implements OnInit {
 
     getRandomNpc(): void {
         this.rawTextBlock = null;
+
         this.npcService.getRandomNpc()
             .then(npc => this.randomNpc = npc)
             .then(npc => {
@@ -69,7 +70,10 @@ export class NpcComponent implements OnInit {
                             this.setArmor(profession.armorProficiencies);
                             this.setHitpointsString();
                             this.randomNpc.setAverageHitpoints();
-                        });
+                        })
+                        .then(race =>
+                            this.setWeaponActionData()
+                        );
                 });
             });
     }
@@ -77,13 +81,12 @@ export class NpcComponent implements OnInit {
 
     setMeleeWeapon(meleeWeaponProficiencies: string[]): void {
         this.weaponService.getWeapon(meleeWeaponProficiencies)
-        .then(weapon => this.randomNpc.meleeWeapon = weapon)
-        .then(weapon => this.randomNpc.actions);
+            .then(weapon => this.randomNpc.meleeWeapon = weapon);
     }
 
     setRangedWeapon(rangedWeaponProficiencies: string[]): void {
         this.weaponService.getWeapon(rangedWeaponProficiencies)
-        .then(weapon => this.randomNpc.rangedWeapon = weapon);
+            .then(weapon => this.randomNpc.rangedWeapon = weapon);
     }
 
     setArmor(armorProficiencies: string[]): void {
@@ -99,6 +102,15 @@ export class NpcComponent implements OnInit {
         this.randomNpc.hitPoints = (this.randomNpc.challengeRating.hitDieQuantity.toString() + 'd'
             + this.randomNpc.hitDie.toString()
             + ((bonusHealth > 0) ? '+' + bonusHealth.toString() : ''));
+    }
+
+    setWeaponActionData(): void {
+        this.randomNpc.setWeaponBonus('melee');
+        this.randomNpc.setWeaponBonus('ranged');
+        this.randomNpc.setAverageWeaponDamage('melee');
+        this.randomNpc.setAverageWeaponDamage('ranged');
+        this.randomNpc.setWeaponToHitBonus('melee');
+        this.randomNpc.setWeaponToHitBonus('ranged');
     }
 
     getJSONstring(): void {
