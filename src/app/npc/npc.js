@@ -84,6 +84,13 @@ var Npc = (function () {
         var str = (bonus > 0) ? (' +' + bonus.toString()) : (' -' + bonus.toString());
         return str;
     };
+    Npc.prototype.getPassivePerception = function () {
+        var hasProficiencyInPerception = false;
+        if ('perception' in this.profession.skillProficiencies) {
+            hasProficiencyInPerception = true;
+        }
+        return 10 + Math.floor((this.attributes['wisdom'] - 10) / 2) + (hasProficiencyInPerception ? this.challengeRating.profBonus : 0);
+    };
     Npc.prototype.getWeaponBonus = function (weaponType) {
         var thisWeapon = null;
         if (weaponType === 'melee') {

@@ -18,7 +18,7 @@
 		<div>
 		
 		<br /><strong>Skills </strong> {{randomNpc.skillsString}}
-		<br /><strong>Senses </strong> passive Perception: TODO, {{randomNpc.race.senses}}
+		<br /><strong>Senses </strong> passive Perception: {{randomNpc.getPassivePerception()}}<span *ngIf="randomNpc.race.senses">, {{randomNpc.race.senses}}</span>
 		<br /><strong>Languages </strong> {{randomNpc.race.languages}}
 		<br /><strong>Challenge </strong> {{randomNpc.challengeRating.label}}
 

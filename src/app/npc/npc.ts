@@ -113,6 +113,14 @@ export class Npc {
         return str;
     }
 
+    getPassivePerception(): number {
+        let hasProficiencyInPerception = false;
+        if ('perception' in this.profession.skillProficiencies) {
+            hasProficiencyInPerception = true;
+        }
+        return 10 + Math.floor((this.attributes['wisdom'] -10 )/ 2) + (hasProficiencyInPerception ? this.challengeRating.profBonus : 0);
+    }
+
     getWeaponBonus(weaponType: string): number {
         let thisWeapon = null;
         if (weaponType === 'melee') {
